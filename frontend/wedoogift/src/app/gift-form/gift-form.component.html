@@ -1,0 +1,10 @@
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+
+  <label for="amount">Amount </label>
+  <input id="amount" type="number" formControlName="amount">
+
+  <button type="submit">Submit</button>
+
+  <app-result-cards [isResult]="isResult" [isEqual]="isEqual" [cardResult]="cardResult" (changeAmountEvent)="onSubmit($event)"></app-result-cards>
+
+</form>

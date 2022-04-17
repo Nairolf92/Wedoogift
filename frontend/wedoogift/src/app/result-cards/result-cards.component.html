@@ -1,0 +1,38 @@
+<p *ngIf="isResult">Votre montant est composé des cartes suivantes :</p>
+<ng-template [ngIf]="cardResult && isEqual" [ngIfElse]="floorOrCeil">
+  <p *ngIf="cardResult.equal">
+    <button
+      *ngFor="let value of cardResult.equal.cards"
+      (click)="changeAmount(value)"
+    >
+      {{value}}
+    </button>
+  </p>
+</ng-template>
+
+<ng-template #floorOrCeil>
+  <p *ngIf="cardResult.floor && cardResult.ceil">
+    <button
+      *ngFor="let value of cardResult.floor.cards"
+      (click)="changeAmount(value)"
+    >
+      {{value}}
+    </button>
+  </p>
+  <p *ngIf="cardResult.floor && !cardResult.ceil">
+    <button
+      *ngFor="let value of cardResult.floor.cards"
+      (click)="changeAmount(value)"
+    >
+      {{value}}
+    </button>
+  </p>
+  <p *ngIf="!cardResult.floor && cardResult.ceil">
+    <button
+      *ngFor="let value of cardResult.ceil.cards"
+      (click)="changeAmount(value)"
+    >
+      {{value}}
+    </button>
+  </p>
+</ng-template>
