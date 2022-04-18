@@ -49,14 +49,14 @@ export class GiftFormComponent implements OnInit {
 
   public increaseAmount() {
     if (this.amount!! >= 0 ){
-      this.profileForm.get('amount')?.setValue(this.amount+1);
+      this.profileForm.get('amount')?.setValue(this.amount+10);
       this._getCards(this.amount);
     }
   }
 
   public decreaseAmount() {
     if (this.amount!! > 0 ){
-      this.profileForm.get('amount')?.setValue(this.amount-1);
+      this.profileForm.get('amount')?.setValue(this.amount-10);
       this._getCards(this.amount);
     }
   }
