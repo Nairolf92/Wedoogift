@@ -7,7 +7,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 The purpose of this project is to show a list of gift cards available depending on the amount wanted by the user
 ## Preview
 
-<img src="src/assets/preview.png" alt="preview" width="200px"/>
+<img src="src/assets/preview.png" alt="preview" width="500"/>
 
 ## Installation
 Tip : use two differents terminals
