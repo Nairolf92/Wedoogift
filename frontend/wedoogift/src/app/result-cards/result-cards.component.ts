@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {CardModel} from "../models/card.model";
 
 @Component({
@@ -6,7 +6,7 @@ import {CardModel} from "../models/card.model";
   templateUrl: './result-cards.component.html',
   styleUrls: ['./result-cards.component.css']
 })
-export class ResultCardsComponent implements OnInit {
+export class ResultCardsComponent {
 
   @Input() amount: number = 0;
   @Input() isResult: boolean = false
@@ -14,14 +14,7 @@ export class ResultCardsComponent implements OnInit {
   @Input() cardResult: CardModel = {};
   @Output() changeAmountEvent = new EventEmitter<number>();
 
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
   public changeAmount(amount: number) {
     this.changeAmountEvent.emit(amount);
   }
-
 }

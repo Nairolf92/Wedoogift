@@ -1,4 +1,5 @@
 <p *ngIf="isResult">Votre montant est composé des cartes suivantes :</p>
+<!--Step 1 , If the amount is possible, display the content from the equal CartModel-->
 <ng-template [ngIf]="cardResult && isEqual" [ngIfElse]="floorOrCeil">
   <p *ngIf="cardResult.equal">
     <button
@@ -10,6 +11,7 @@
   </p>
 </ng-template>
 
+<!-- Step 2 "if the desired amount is not possible" display all the results possible to let the user choose-->
 <ng-template #floorOrCeil>
   <p *ngIf="cardResult.floor && cardResult.ceil">
     <button
@@ -18,7 +20,20 @@
     >
       {{value}}
     </button>
+    <br>
+    <span>OU</span>
+    <br>
+    <button
+      *ngFor="let value of cardResult.ceil.cards"
+      (click)="changeAmount(value)"
+    >
+      {{value}}
+    </button>
   </p>
+<!-- Step 3 "if the desired amount is higher or lower than the possible amounts"
+ So it means that either floor or ceil is present ?
+ -->
+<!-- Display either floor or ceil depending on the API result  -->
   <p *ngIf="cardResult.floor && !cardResult.ceil">
     <button
       *ngFor="let value of cardResult.floor.cards"

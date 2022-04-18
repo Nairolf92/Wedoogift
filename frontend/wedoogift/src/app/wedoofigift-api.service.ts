@@ -7,7 +7,9 @@ import {catchError, throwError} from "rxjs";
 })
 export class WedoofigiftAPIService {
 
-  private REST_API_SERVER = "http://localhost:3000/shop/5/search-combination";
+  private shopId: number = 0;
+  private REST_API_SERVER: string = 'http://localhost:3000';
+  private SEARCH_COMBINATION: string = '';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -24,8 +26,11 @@ export class WedoofigiftAPIService {
     return throwError(errorMessage);
   }
 
-  public getCards(amount: number){
+  public getCards(amount: number, shopId: number = 5){
     let param: any = {'amount' : amount};
-    return this.httpClient.get(this.REST_API_SERVER, {params: param}).pipe(catchError(this.handleError));
+    this.shopId = shopId;
+    this.SEARCH_COMBINATION = `${this.REST_API_SERVER}/shop/${(this.shopId)}/search-combination`;
+
+    return this.httpClient.get(this.SEARCH_COMBINATION, {params: param}).pipe(catchError(this.handleError));
   }
 }

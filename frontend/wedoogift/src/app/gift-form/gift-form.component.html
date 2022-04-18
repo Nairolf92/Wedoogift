@@ -1,10 +1,17 @@
 <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
 
-  <label for="amount">Amount </label>
+  <label for="amount">Montant désiré : </label>
+  <br>
   <input id="amount" type="number" formControlName="amount">
+  <br>
+  <br>
+  <button type="submit">VALIDER</button>
 
-  <button type="submit">Submit</button>
+  <button (click)="increaseAmount()">Montant suivant</button>
+  <button (click)="decreaseAmount()">Montant précédent</button>
 
   <app-result-cards [isResult]="isResult" [isEqual]="isEqual" [cardResult]="cardResult" (changeAmountEvent)="onSubmit($event)"></app-result-cards>
 
 </form>
+
+<div class="gift"></div>
